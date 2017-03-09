@@ -1,5 +1,6 @@
 package com.javarevolutions.jsf.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +51,11 @@ public class BeanLogin {
 		System.out.println("User : " + getUser());
 		System.out.println("Password : " + getPassword());
 		if(getUser().equals("Samuel") && getPassword().equals("123pass")){
-			return "welcome";
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			Map<String, Object> sessionMap = externalContext.getSessionMap();
+			listaAlumnos = new ArrayList<BeanLogin>();
+			sessionMap.put("listaAlumnos", listaAlumnos);
+			return "alumnos/alumno";
 		}
 		else{
 			return "login";
@@ -63,6 +68,31 @@ public class BeanLogin {
 		System.out.println("Password : " + getPassword());
 		setLista();
 		listaAlumnos.add(this);
+		return "";
+	}
+	
+	public String actualizar(){
+		System.out.println("Actualizando . . .");
+		setLista();
+		for(BeanLogin obj : listaAlumnos){
+			if(obj.getUser().equals(getUser())){
+				obj.setPassword(getPassword());
+				obj.setEdad(getEdad());
+				obj.setNombre(getNombre());
+			}
+		}
+		return "";
+	}
+	
+	public String borrar(){
+		System.out.println("Borrando . . .");
+		setLista();
+		for(BeanLogin obj : listaAlumnos){
+			if(obj.getUser().equals(getUser())){
+				listaAlumnos.remove(obj);
+				break;
+			}
+		}
 		return "";
 	}
 	

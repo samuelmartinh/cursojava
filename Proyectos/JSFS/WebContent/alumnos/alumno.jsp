@@ -12,7 +12,7 @@
 	<f:view>
 		<h:form>
 
-Welcome :  <h:outputLabel value="#{loginBean.user }" )/>
+Welcome :  <h:outputLabel value="#{loginBean.user }" />
 
 			<table aling="center">
 
@@ -50,7 +50,7 @@ Welcome :  <h:outputLabel value="#{loginBean.user }" )/>
 					<f:facet name="header">
 						<h:outputText value="Usuario"></h:outputText>
 					</f:facet>
-					<h:outputText value="#{obj.usuario}"></h:outputText>
+					<h:outputText value="#{obj.user}"></h:outputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
