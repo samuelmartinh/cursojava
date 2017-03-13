@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2017 10:08:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.javarevolutions.jhs.persistence.Login" table="login" schema="public" optimistic-lock="version">
+        <id name="usuario" type="string">
+            <column name="usuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="edad" type="java.lang.Integer">
+            <column name="edad" />
+        </property>
+    </class>
+</hibernate-mapping>
