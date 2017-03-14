@@ -12,58 +12,96 @@
         <f:view>
             <h:form>
 
-                Welcome :  <h:outputLabel value="#{loginBean.usuario }" />
+                Welcome :  <h:outputLabel value="#{loginBean.nombre }" />
 
                 <table aling="center">
 
                     <tr>
-                        <td style="font-weight: bold; size: 12px; color: blue;">Usuario
+                        <td style="font-weight: bold; size: 12px; color: blue;">Matricula
                             :</td>
-                        <td><h:inputText value="#{loginBean.usuario}" /></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold; size: 12px; color: blue;">Password
-                            :</td>
-                        <td><h:inputSecret value="#{loginBean.password}" /></td>
+                        <td><h:inputText value="#{alumnoBean.matricula}" /></td>
                     </tr>
                     <tr>
                         <td style="font-weight: bold; size: 12px; color: blue;">Nombre(s)
                             :</td>
-                        <td><h:inputText value="#{loginBean.nombre}" /></td>
+                        <td><h:inputText value="#{alumnoBean.nombre}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;">Apellido Paterno
+                            :</td>
+                        <td><h:inputText value="#{alumnoBean.app}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;">Apellido Materno
+                            :</td>
+                        <td><h:inputText value="#{alumnoBean.apm}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;">Sexo
+                            :</td>
+                        <td>
+                            <h:selectOneMenu id="sexos" value="#{alumnoBean.sexo}">
+                                <f:selectItem itemLabel="Masculino" itemValue="H"></f:selectItem>
+                                <f:selectItem itemLabel="Femenino" itemValue="F"></f:selectItem>
+                            </h:selectOneMenu>
+                        </td>
                     </tr>
                     <tr>
                         <td style="font-weight: bold; size: 12px; color: blue;">Edad :
                         </td>
-                        <td><h:inputText value="#{loginBean.edad}" /></td>
+                        <td><h:inputText value="#{alumnoBean.edad}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; size: 12px; color: blue;">Usuario :
+                        </td>
+                        <td><h:inputText value="#{alumnoBean.usuario}" /></td>
                     </tr>
                     <tr>
                         <td colspan="2"><h:commandButton value="Guardar"
-                                         action="#{loginBean.guardar }" /> <h:commandButton
-                                         value="Actualizar" action="#{loginBean.actualizar }" /> <h:commandButton
-                                         value="Eliminar" action="#{loginBean.borrar }" /></td>
+                                         action="#{alumnoBean.insert }" /> <h:commandButton
+                                         value="Actualizar" action="#{alumnoBean.update }" /> <h:commandButton
+                                         value="Eliminar" action="#{alumnoBean.delete }" /></td>
                     </tr>
                 </table>
 
-                        <h:dataTable id="tablaUsuarios" value="#{loginBean.listaUsuarios}"
+                <h:dataTable id="tablaAlumnos" value="#{alumnoBean.lista}"
                              var="obj">
+
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Usuario"></h:outputText>
+                            <h:outputText value="Matricula"></h:outputText>
                         </f:facet>
-                        <h:outputText value="#{obj.usuario}"></h:outputText>
+                        <h:outputText value="#{obj.matricula}"></h:outputText>
                     </h:column>
+
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Nombre(s)"></h:outputText>
+                            <h:outputText value="Nombre completo"></h:outputText>
                         </f:facet>
-                        <h:outputText value="#{obj.nombre}"></h:outputText>
+                        <h:outputText value="#{obj.nombre}"/><h:outputText value="#{obj.app}"/><h:outputText value="#{obj.apm}"/>
                     </h:column>
+
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Edad"></h:outputText>
                         </f:facet>
                         <h:outputText value="#{obj.edad}"></h:outputText>
                     </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Sexo"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{obj.sexo}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Usuario"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{obj.usuario}"></h:outputText>
+                    </h:column>
+
                 </h:dataTable>
 
             </h:form>

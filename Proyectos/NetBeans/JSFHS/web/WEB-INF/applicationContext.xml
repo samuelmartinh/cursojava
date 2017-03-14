@@ -26,6 +26,12 @@
 ">
     <context:annotation-config/>
     <context:component-scan base-package="com.javarevolutions"/>
+    
+    <tx:annotation-driven/>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"></property>
@@ -33,7 +39,7 @@
         <property name="username" value="postgres"></property>
         <property name="password" value="052001085@M1"></property>
     </bean>
-
+    
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource">
             <ref bean="dataSource"></ref>
@@ -49,16 +55,24 @@
         <property name="mappingResources">
             <list>
                 <value>/com/javarevolutions/jhs/persistence/Login.hbm.xml</value> 
+                <value>/com/javarevolutions/jhs/persistence/Alumnos.hbm.xml</value> 
             </list>
         </property>
     </bean>
+    
     <!-- DAOS nunca a la interface-->
     <bean id="loginDAO" class="com.javarevolutions.jdbc.dao.ImplLogin">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="alumnoDAO" class="com.javarevolutions.jdbc.dao.ImplAlumno">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
     <!-- BOS -->
     <bean id="loginBO" class="com.javarevolutions.jsf.bo.LoginImplBO">
         <property name="loginDAO" ref="loginDAO"></property>
+    </bean>
+    <bean id="alumnoBO" class="com.javarevolutions.jsf.bo.AlumnoImplBO">
+        <property name="alumnoDAO" ref="alumnoDAO"></property>
     </bean>
 </beans>

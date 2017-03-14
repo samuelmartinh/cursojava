@@ -14,4 +14,13 @@
             <value>#{loginBO}</value>
         </managed-property>
     </managed-bean>
+    
+    <managed-bean>>
+        <managed-bean-name>alumnoBean</managed-bean-name>
+        <managed-bean-class>com.javarevolutions.jsf.bean.BeanAlumno</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>-<managed-property>
+            <property-name>alumnoBO</property-name>
+            <value>#{alumnoBO}</value>
+        </managed-property>
+    </managed-bean>
 </faces-config>
